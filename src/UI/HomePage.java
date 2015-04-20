@@ -356,7 +356,7 @@ public class HomePage extends javax.swing.JFrame {
         c.setSize(400, 300);
         c.setLocation(0, 0);
         c.setVisible(true);
-        //this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jCreateActionPerformed
 
     private void PurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PurchaseActionPerformed

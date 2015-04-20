@@ -310,7 +310,7 @@ public class CreateRoom extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jStartActionPerformed
-        /*JSONObject response = null;
+        JSONObject response = null;
          try {
          response = SSLClient.postMessage(getMessgeStart());
          } catch (IOException e) {
@@ -326,7 +326,7 @@ public class CreateRoom extends javax.swing.JFrame {
 
          if (JudgeStatus.OutputStatus(status) == false) {
          return;
-         }*/
+         }
         BlackJackUINew ui = new BlackJackUINew();
         ui.setVisible(true);
         try {
