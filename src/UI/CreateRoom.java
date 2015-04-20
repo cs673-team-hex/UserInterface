@@ -43,7 +43,7 @@ public class CreateRoom extends javax.swing.JFrame {
     private int wager;
     private String game_type;
     private int room_status;
-    Timer timer;
+    Timer timer_roominfo;
 
     /**
      * Creates new form CreateRoom
@@ -51,7 +51,7 @@ public class CreateRoom extends javax.swing.JFrame {
     public CreateRoom() {
         initComponents();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
+        /*addWindowListener(new WindowAdapter() {
 
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
@@ -80,8 +80,8 @@ public class CreateRoom extends javax.swing.JFrame {
                     return;
                 }
             }
-        });
-        timer = new java.util.Timer(true);
+        });*/
+        timer_roominfo = new java.util.Timer(true);
         DefaultTableModel model = (DefaultTableModel) jRoom.getModel();
         Ask4Roominfo task = new Ask4Roominfo();
         task.setOnRefreshListner(new Ask4Roominfo.OnRefreshListener() {
@@ -113,21 +113,23 @@ public class CreateRoom extends javax.swing.JFrame {
                         //System.out.println(task.get_room_name()[i]+task.get_creator_name()[i]+task.get_game_name()[i]+task.get_currentmax()[i]);
                     }
                 }
-
+                System.out.println("RoomStatus!!" + task.Get_roomstatus());
+                if (task.Get_roomstatus() == 2) {
+                    BlackJackUINew ui = new BlackJackUINew();
+                    ui.setVisible(true);
+                    try {
+                        ui.DoSomethingAtBegin();
+                    } catch (MessagingException ex) {
+                        Logger.getLogger(BlackJackUINew.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    timer_roominfo.cancel();
+                    CreateRoom.this.dispose();
+                }
+                
             }
         });
-        if (task.Get_roomstatus() == 2) {
-            BlackJackUINew ui = new BlackJackUINew();
-            ui.setVisible(true);
-            try {
-                ui.DoSomethingAtBegin();
-            } catch (MessagingException ex) {
-                Logger.getLogger(BlackJackUINew.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            this.dispose();
-        }
 
-        timer.schedule(task, START_TIME, PERIOD);
+        timer_roominfo.schedule(task, START_TIME, PERIOD);
 
     }
 
@@ -192,7 +194,7 @@ public class CreateRoom extends javax.swing.JFrame {
         jRoom = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setLayout(null);
@@ -311,22 +313,22 @@ public class CreateRoom extends javax.swing.JFrame {
 
     private void jStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jStartActionPerformed
         JSONObject response = null;
-         try {
-         response = SSLClient.postMessage(getMessgeStart());
-         } catch (IOException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-         }
+        try {
+            response = SSLClient.postMessage(getMessgeStart());
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
-         try {
-         status = response.getInt(STATUS);
-         } catch (JSONException ex) {
-         Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
-         }
+        try {
+            status = response.getInt(STATUS);
+        } catch (JSONException ex) {
+            Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-         if (JudgeStatus.OutputStatus(status) == false) {
-         return;
-         }
+        if (JudgeStatus.OutputStatus(status) == false) {
+            return;
+        }
         BlackJackUINew ui = new BlackJackUINew();
         ui.setVisible(true);
         try {
@@ -334,7 +336,7 @@ public class CreateRoom extends javax.swing.JFrame {
         } catch (MessagingException ex) {
             Logger.getLogger(BlackJackUINew.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.dispose();
+        //this.dispose();
 
     }//GEN-LAST:event_jStartActionPerformed
 
@@ -356,7 +358,7 @@ public class CreateRoom extends javax.swing.JFrame {
         if (JudgeStatus.OutputStatus(status) == false) {
             return;
         }
-        timer.cancel();
+        timer_roominfo.cancel();
         this.dispose();
     }//GEN-LAST:event_jQuitActionPerformed
 

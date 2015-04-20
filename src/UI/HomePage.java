@@ -71,7 +71,8 @@ public class HomePage extends javax.swing.JFrame {
     private int[] roommax = new int[num];
     private String[] roomtitles = new String[num];
     Ask4RoomList task = new Ask4RoomList();
-
+    Timer timer_roomlist;
+    
     public HomePage() throws JSONException {
         initComponents();
 
@@ -79,7 +80,7 @@ public class HomePage extends javax.swing.JFrame {
         jMoney.setText("Money: " + Player.GetPlayer().GetBalance() + "");
         jRank.setText("Rank: " + Player.GetPlayer().GetRank() + "");
 
-        Timer timer = new java.util.Timer(true);
+        timer_roomlist = new java.util.Timer(true);
         //Ask4RoomList task = new Ask4RoomList();
         DefaultTableModel model = (DefaultTableModel) jRoomList.getModel();
         jRoomList.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -120,7 +121,7 @@ public class HomePage extends javax.swing.JFrame {
             }
 
         });
-        timer.schedule(task, START_TIME, PERIOD);
+        timer_roomlist.schedule(task, START_TIME, PERIOD);
 
         //System.out.println("Reach");
     }
@@ -356,7 +357,6 @@ public class HomePage extends javax.swing.JFrame {
         c.setSize(400, 300);
         c.setLocation(0, 0);
         c.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jCreateActionPerformed
 
     private void PurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PurchaseActionPerformed
@@ -384,16 +384,16 @@ public class HomePage extends javax.swing.JFrame {
         } catch (JSONException ex) {
             Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        //static method
+        if (JudgeStatus.OutputStatus(status) == false) {
+            return;
+        }
+        
         CreateRoom C = new CreateRoom();
         C.setSize(800, 450);
         C.setLocation(0, 0);
         C.setVisible(true);
 
-        //static method
-        if (JudgeStatus.OutputStatus(status) == false) {
-            return;
-        }
     }//GEN-LAST:event_jJoinActionPerformed
 
     public JSONObject getMessgeJoin() {
@@ -407,14 +407,6 @@ public class HomePage extends javax.swing.JFrame {
             //int row = jRoomList.getSelectedRow();
 
             //Ask4RoomList task = new Ask4RoomList();
-            task.setOnRefreshListner(new Ask4RoomList.OnRefreshListener() {
-
-                @Override
-                public void onRefresh(String test) {
-                    
-                }
-
-            });
             //System.out.println(selected_row);
             for (int j = 0; j < roomids.length; j++) {
                 System.out.println(roomids[j]);

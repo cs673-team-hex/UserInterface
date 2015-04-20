@@ -50,7 +50,7 @@ public class Music {
             Logger.getLogger(Music.class.getName()).log(Level.SEVERE, null, ex);
             }
             myBackgroundPlayer.start(myLoop);*/
-            File soundfile = new File("src/UI/BackGroundMusic/TheDawn.wav");
+            File soundfile = new File("src/UI/BackGroundMusic/Normal.wav");
             Clip clip = AudioSystem.getClip();
             AudioInputStream inputStream = AudioSystem.getAudioInputStream(soundfile);
             clip.open(inputStream);
