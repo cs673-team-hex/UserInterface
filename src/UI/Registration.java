@@ -5,7 +5,10 @@
  */
 package UI;
 
-import SedingData.SSLClient;
+import JudgeStatus.JudgeStatus;
+import SendingData.SSLClient;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -21,16 +24,28 @@ import org.json.JSONObject;
  */
 public class Registration extends javax.swing.JFrame {
 
-    String password = "";
-    String username;
-    String repassword = "";
-    String nickname;
+    private String password = "";
+    private String username;
+    private String repassword = "";
+    private String nickname;
+    private static final int tempuserid = 0;
+    private int status;
+    public static String STATUS = "status";
 
     /**
      * Creates new form Registration
      */
     public Registration() {
         initComponents();
+        addWindowListener(new WindowAdapter() {
+
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                Login LoginPage;
+                LoginPage = new Login();
+                LoginPage.setVisible(true);
+            }
+        });
     }
 
     /**
@@ -121,12 +136,12 @@ public class Registration extends javax.swing.JFrame {
             password = password + temp_pass[i];
             //System.out.print(temp[i]);
         }
-        for (int j = 0; j < repass.getPassword().length; j++){
+        for (int j = 0; j < repass.getPassword().length; j++) {
             repassword = repassword + temp_repass[j];
         }
         System.out.println("password: " + password);
         System.out.println("repassword: " + repassword);
-        if(!password.equals(repassword)){
+        if (!password.equals(repassword)) {
             jLabel2.setEnabled(true);
             return;
         }
@@ -159,6 +174,15 @@ public class Registration extends javax.swing.JFrame {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+            try {
+                status = response.getInt(STATUS);
+            } catch (JSONException ex) {
+                Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            //static method
+            if (JudgeStatus.OutputStatus(status) == false) {
+                return;
+            }
             System.out.println(response);
             JOptionPane.showMessageDialog(null, "Succesful!!");
             this.dispose();
@@ -170,7 +194,8 @@ public class Registration extends javax.swing.JFrame {
     public JSONObject getMessge() {
         JSONObject test = new JSONObject();
         try {
-            test.put("opt", "Signon");
+            test.put("opt", "signup");
+            test.put("userid", tempuserid);
             JSONObject info = new JSONObject();
             info.put("username", username);
             info.put("passwd", password);

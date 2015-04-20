@@ -1,0 +1,104 @@
+[LOG]Round 1: AI Wins 50 Dollars
+[LOG]AI Hand:      ClubK Heart6 Total Num: 16
+[LOG]Player Hand : DiamoudQ Club8 Diamoud6 Total Num: -1
+[LOG]-----------------------------------------------
+[LOG]Round 1: AI Wins 50 Dollars
+[LOG]AI Hand:      ClubK Heart6 Diamoud3 Total Num: 19
+[LOG]Player Hand : DiamoudQ Club8 Diamoud6 Total Num: -1
+[LOG]-----------------------------------------------
+[LOG]Round 2: AI Wins 50 Dollars
+[LOG]AI Hand:      SpadeQ Diamoud7 Total Num: 17
+[LOG]Player Hand : Diamoud9 Club7 Spade6 Total Num: -1
+[LOG]-----------------------------------------------
+[LOG]Round 2: AI Wins 50 Dollars
+[LOG]AI Hand:      SpadeQ Diamoud7 HeartA Heart7 Total Num: -1
+[LOG]Player Hand : Diamoud9 Club7 Spade6 Total Num: -1
+[LOG]-----------------------------------------------
+[LOG]Round 3: You Wins 50 Dollars
+[LOG]AI Hand:      HeartJ ClubJ Total Num: 20
+[LOG]Player Hand : Spade2 Club9 SpadeK Total Num: 21
+[LOG]-----------------------------------------------
+[LOG]Round 1: AI Wins 50 Dollars
+[LOG]AI Hand:      ClubK Heart6 Total Num: 16
+[LOG]Player Hand : DiamoudQ Club8 Diamoud6 Total Num: -1
+[LOG]-----------------------------------------------
+[LOG]Round 1: AI Wins 50 Dollars
+[LOG]AI Hand:      ClubK Heart6 Diamoud3 Total Num: 19
+[LOG]Player Hand : DiamoudQ Club8 Diamoud6 Total Num: -1
+[LOG]-----------------------------------------------
+[LOG]Round 2: AI Wins 50 Dollars
+[LOG]AI Hand:      SpadeQ Diamoud7 Total Num: 17
+[LOG]Player Hand : Diamoud9 Club7 Spade6 Total Num: -1
+[LOG]-----------------------------------------------
+[LOG]Round 2: AI Wins 50 Dollars
+[LOG]AI Hand:      SpadeQ Diamoud7 HeartA Heart7 Total Num: -1
+[LOG]Player Hand : Diamoud9 Club7 Spade6 Total Num: -1
+[LOG]-----------------------------------------------
+[LOG]Round 3: You Wins 50 Dollars
+[LOG]AI Hand:      HeartJ ClubJ Total Num: 20
+[LOG]Player Hand : Spade2 Club9 SpadeK Total Num: 21
+[LOG]-----------------------------------------------
+[LOG]Round 1: You Wins 50 Dollars
+[LOG]AI Hand:      Club9 Heart7 SpadeJ Total Num: -1
+[LOG]Player Hand : Club8 Heart2 Spade3 Total Num: 13
+[LOG]-----------------------------------------------
+[LOG]Round 2: AI Wins 50 Dollars
+[LOG]AI Hand:      Diamoud8 HeartK Total Num: 18
+[LOG]Player Hand : Heart8 ClubJ SpadeK Total Num: -1
+[LOG]-----------------------------------------------
+[LOG]Round 2: AI Wins 50 Dollars
+[LOG]AI Hand:      Diamoud8 HeartK Total Num: 18
+[LOG]Player Hand : Heart8 ClubJ SpadeK Total Num: -1
+[LOG]-----------------------------------------------
+[LOG]Round 3: AI Wins 50 Dollars
+[LOG]AI Hand:      Heart4 Spade10 Diamoud5 Total Num: 19
+[LOG]Player Hand : ClubA Spade6 DiamoudQ Total Num: 17
+[LOG]-----------------------------------------------
+[LOG]Round 1: You Wins 50 Dollars
+[LOG]AI Hand:      Heart10 Diamoud5 Diamoud8 Total Num: -1
+[LOG]Player Hand : Diamoud4 Heart8 Heart7 Total Num: 19
+[LOG]-----------------------------------------------
+[LOG]Round 1: AI Wins 50 Dollars
+[LOG]AI Hand:      HeartJ Diamoud3 ClubA Diamoud2 Diamoud5 Total Num: 21
+[LOG]Player Hand : Heart8 Heart4 Club4 Total Num: 16
+[LOG]-----------------------------------------------
+[LOG]Round 1: AI Wins 50 Dollars
+[LOG]AI Hand:      SpadeJ Club2 Total Num: 12
+[LOG]Player Hand : Club7 HeartJ Diamoud5 Total Num: -1
+[LOG]-----------------------------------------------
+[LOG]Round 1: AI Wins 50 Dollars
+[LOG]AI Hand:      SpadeJ Club2 Spade9 Total Num: 21
+[LOG]Player Hand : Club7 HeartJ Diamoud5 Total Num: -1
+[LOG]-----------------------------------------------
+[LOG]Round 1: AI Wins 50 Dollars
+[LOG]AI Hand:      Diamoud2 Spade7 Total Num: 9
+[LOG]Player Hand : SpadeQ Diamoud3 Club2 Club5 Club6 Total Num: -1
+[LOG]-----------------------------------------------
+[LOG]Round 1: AI Wins 50 Dollars
+[LOG]AI Hand:      Diamoud2 Spade7 DiamoudQ Total Num: 19
+[LOG]Player Hand : SpadeQ Diamoud3 Club2 Club5 Club6 Total Num: -1
+[LOG]-----------------------------------------------
+[LOG]Round 2: AI Wins 50 Dollars
+[LOG]AI Hand:      Club9 Diamoud9 Total Num: 18
+[LOG]Player Hand : HeartK Spade5 Spade2 Diamoud7 Total Num: -1
+[LOG]-----------------------------------------------
+[LOG]Round 2: AI Wins 50 Dollars
+[LOG]AI Hand:      Club9 Diamoud9 Total Num: 18
+[LOG]Player Hand : HeartK Spade5 Spade2 Diamoud7 Total Num: -1
+[LOG]-----------------------------------------------
+[LOG]Round 3: AI Wins 50 Dollars
+[LOG]AI Hand:      Spade8 ClubK Total Num: 18
+[LOG]Player Hand : Club4 Heart7 ClubQ Heart3 Total Num: -1
+[LOG]-----------------------------------------------
+[LOG]Round 3: AI Wins 50 Dollars
+[LOG]AI Hand:      Spade8 ClubK Total Num: 18
+[LOG]Player Hand : Club4 Heart7 ClubQ Heart3 Total Num: -1
+[LOG]-----------------------------------------------
+[LOG]Round 1: AI Wins 50 Dollars
+[LOG]AI Hand:      SpadeQ HeartA Total Num: 21
+[LOG]Player Hand : Spade4 Diamoud6 DiamoudQ Club8 Total Num: -1
+[LOG]-----------------------------------------------
+[LOG]Round 1: AI Wins 50 Dollars
+[LOG]AI Hand:      SpadeQ HeartA Total Num: 21
+[LOG]Player Hand : Spade4 Diamoud6 DiamoudQ Club8 Total Num: -1
+[LOG]-----------------------------------------------

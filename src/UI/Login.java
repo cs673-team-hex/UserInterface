@@ -5,7 +5,14 @@
  */
 package UI;
 
-import SedingData.SSLClient;
+import GameInfo.Music;
+import GameInfo.Player;
+import GameInfo.Room;
+import JudgeStatus.JudgeStatus;
+import SendingData.SSLClient;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -21,14 +28,60 @@ import org.json.JSONObject;
  */
 public class Login extends javax.swing.JFrame {
 
-    String password = "";
-    String username;
+    private String password = "";
+    private String username;
+    private static final int tempuserid = 0;
+    
+    private int status;
+    private double balance;
+    private String nickname;
+    private int rank;
+    private int credit;
+    private int userid;
+    private double factor1;
+    private double factor2;
+    private double factor3;
 
+    public static String STATUS = "status";
+    public static String RES = "result";
+    public static String KEY_BALANCE = "balance";
+    public static String KEY_NICKNAME = "nickname";
+    public static String KEY_RANK = "rank";
+    public static String KEY_CREDIT = "credit";
+    public static String KEY_USERID = "userid";
+    public static String KEY_FACTOR1 = "factor1";
+    public static String KEY_FACTOR2 = "factor2";
+    public static String KEY_FACTOR3 = "factor3";
+    
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
+        Room.initial();
+        //System.out.println(user_name.getText());
+        //System.out.println(user_pass.getPassword());
+        user_name.addMouseListener(new MouseAdapter(){
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(user_name.getText().equals("User Name")){
+                    user_name.setText("");
+                }
+            }
+        });
+        
+        user_pass.addMouseListener(new MouseAdapter(){
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                //if(user_pass.getPassword().equals("Password")){
+                    user_pass.setText("");
+                //}
+            }
+        });
+        
+        Music.initial(1);
     }
     
     /**
@@ -117,7 +170,6 @@ public class Login extends javax.swing.JFrame {
 
     private void user_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user_nameActionPerformed
         // TODO add your handling code here:
-
     }//GEN-LAST:event_user_nameActionPerformed
 
     private void log_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_log_inActionPerformed
@@ -155,8 +207,43 @@ public class Login extends javax.swing.JFrame {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        
+        JSONObject result = null;
+        
+        try {
+            status = response.getInt(STATUS);
+            System.out.println(status);
+            //static method
+            if(JudgeStatus.OutputStatus(status) == false){
+                return;
+            }
+            result = response.getJSONObject(RES);
+        } catch (JSONException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            nickname = result.getString(KEY_NICKNAME);
+            balance = result.getDouble(KEY_BALANCE);
+            rank = result.getInt(KEY_RANK);
+            credit = result.getInt(KEY_CREDIT);
+            userid = result.getInt(KEY_USERID);
+            factor1 = result.getDouble(KEY_FACTOR1);
+            factor2 = result.getDouble(KEY_FACTOR2);
+            factor3 = result.getDouble(KEY_FACTOR3);
+        } catch (JSONException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //System.out.println("CREDIT" + credit);
+        Player.initial(balance,nickname,rank,credit,userid,factor1,factor2,factor3);
+        
         System.out.println(response);
-        HomePage h = new HomePage();
+        HomePage h = null;
+        try {
+            h = new HomePage();
+        } catch (JSONException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
         h.setSize(800,450);
         h.setLocation(0,0);
         h.setVisible(true);
@@ -175,6 +262,7 @@ public class Login extends javax.swing.JFrame {
         JSONObject test = new JSONObject();
         try {
             test.put("opt", "login");
+            test.put("userid", tempuserid);
             JSONObject info = new JSONObject();
             info.put("username", username);
             info.put("passwd", password);
