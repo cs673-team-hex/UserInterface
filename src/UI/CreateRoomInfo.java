@@ -191,7 +191,7 @@ public class CreateRoomInfo extends javax.swing.JFrame {
             Logger.getLogger(HomePage.class.getName()).log(Level.SEVERE, null, ex);
         }
         Room.initial(room_id, cre_title, cre_num, cre_wager, cre_type);
-
+        Player.GetPlayer().SetIsCreator(true);
         CreateRoom C = new CreateRoom();
         C.setSize(800, 450);
         C.setLocation(0, 0);

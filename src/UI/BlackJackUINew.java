@@ -147,7 +147,10 @@ public class BlackJackUINew extends javax.swing.JFrame {
                     TerminateControlOfPlayer();
                 }
                 if (Players[0].getuserstatus() == 3 || Players[0].getuserstatus() == 4 || Players[0].getuserstatus() == 5) {
-                    AskForNextRound();
+                    if (Player.GetPlayer().GetIsCreator() == true) {
+                        AskForNextRound();
+                    }
+                    
                     RefreshNumOfPlayerHand(Players[0]);
                     RoundEnd = true;
                     if (!BlackJackRule.GetBlackJackResult(Players[myposition], Players[0])) {

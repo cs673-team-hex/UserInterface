@@ -76,10 +76,10 @@ public class HomePage extends javax.swing.JFrame {
     
     public HomePage() throws JSONException {
         initComponents();
-        jScrollPane1.getViewport().setOpaque(false);
-        jScrollPane1.setOpaque(false);
-        jScrollPane1.getColumnHeader().setOpaque(false);
-        getContentPane().add(jScrollPane1,BorderLayout.CENTER);
+        //jScrollPane1.getViewport().setOpaque(false);
+        //jScrollPane1.setOpaque(false);
+        //jScrollPane1.getColumnHeader().setOpaque(false);
+        //getContentPane().add(jScrollPane1,BorderLayout.CENTER);
         jName.setText(Player.GetPlayer().GetNickName());
         jMoney.setText("Money: " + Player.GetPlayer().GetBalance() + "");
         jRank.setText("Rank: " + Player.GetPlayer().GetRank() + "");
@@ -392,12 +392,11 @@ public class HomePage extends javax.swing.JFrame {
         if (JudgeStatus.OutputStatus(status) == false) {
             return;
         }
-        
+        Player.GetPlayer().SetIsCreator(false);
         CreateRoom C = new CreateRoom();
         C.setSize(800, 450);
         C.setLocation(0, 0);
         C.setVisible(true);
-
     }//GEN-LAST:event_jJoinActionPerformed
 
     public JSONObject getMessgeJoin() {

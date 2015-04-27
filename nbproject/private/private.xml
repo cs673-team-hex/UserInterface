@@ -5,8 +5,11 @@
         <group>
             <file>file:/D:/Study/CS%20673/Project/Login/JavaLibrary1/src/SendingData/SSLClient.java</file>
             <file>file:/D:/Study/CS%20673/Project/Login/JavaLibrary1/src/TimerTaskGame/Ask4RoundInfo.java</file>
+            <file>file:/D:/Study/CS%20673/Project/Login/JavaLibrary1/src/PokerGame/BlackJackRule.java</file>
             <file>file:/D:/Study/CS%20673/Project/Login/JavaLibrary1/src/UI/HomePage.java</file>
             <file>file:/D:/Study/CS%20673/Project/Login/JavaLibrary1/src/UI/BlackJackUINew.java</file>
+            <file>file:/D:/Study/CS%20673/Project/Login/JavaLibrary1/src/UI/Login.java</file>
+            <file>file:/D:/Study/CS%20673/Project/Login/JavaLibrary1/src/UI/CreateRoom.java</file>
         </group>
     </open-files>
 </project-private>
