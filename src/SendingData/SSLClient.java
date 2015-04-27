@@ -27,7 +27,7 @@ public class SSLClient extends Thread {
 	private static BufferedWriter mBufferedWriter;
 	private static BufferedReader mBufferedReader;
 	private static SSLSocket msslSock;
-        public static String IPADD = "10.0.0.26";
+        public static String IPADD = "155.41.103.112";
         
 	public static void initConnect() throws KeyManagementException,
 			NoSuchAlgorithmException, UnsupportedEncodingException, IOException {

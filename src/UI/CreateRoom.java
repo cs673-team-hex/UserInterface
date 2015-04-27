@@ -45,6 +45,7 @@ public class CreateRoom extends javax.swing.JFrame {
     private int room_status;
     Timer timer_roominfo;
 
+    
     /**
      * Creates new form CreateRoom
      */
@@ -92,7 +93,7 @@ public class CreateRoom extends javax.swing.JFrame {
                 title = Room.Getroom().GetTtile();
                 number = Room.Getroom().GetMaxPlayers();
                 type = Room.Getroom().GetGameType();
-                System.out.println(title + "  " + number + "  " + type);
+                //System.out.println(title + "  " + number + "  " + type);
                 if (type == 1) {
                     game_type = "BlackJack";
                 }
@@ -113,7 +114,7 @@ public class CreateRoom extends javax.swing.JFrame {
                         //System.out.println(task.get_room_name()[i]+task.get_creator_name()[i]+task.get_game_name()[i]+task.get_currentmax()[i]);
                     }
                 }
-                System.out.println("RoomStatus!!" + task.Get_roomstatus());
+                //System.out.println("RoomStatus!!" + task.Get_roomstatus());
                 if (task.Get_roomstatus() == 2) {
                     BlackJackUINew ui = new BlackJackUINew();
                     ui.setVisible(true);
@@ -329,13 +330,13 @@ public class CreateRoom extends javax.swing.JFrame {
         if (JudgeStatus.OutputStatus(status) == false) {
             return;
         }
-        BlackJackUINew ui = new BlackJackUINew();
+        /*BlackJackUINew ui = new BlackJackUINew();
         ui.setVisible(true);
         try {
             ui.DoSomethingAtBegin();
         } catch (MessagingException ex) {
             Logger.getLogger(BlackJackUINew.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
         //this.dispose();
 
     }//GEN-LAST:event_jStartActionPerformed

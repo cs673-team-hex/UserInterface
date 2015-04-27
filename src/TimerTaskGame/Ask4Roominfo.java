@@ -91,7 +91,7 @@ public class Ask4Roominfo extends TimerTask {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        System.out.println(response);
+        //System.out.println(response);
         try {
             status = response.getInt(STATUS);
         } catch (JSONException ex) {
@@ -120,7 +120,7 @@ public class Ask4Roominfo extends TimerTask {
             Room.Getroom().SetTitle(title);
             Room.Getroom().SetWager(wager);
             roomstatus = result.getInt(KEY_ROOMSTATUS);
-            System.out.println("RoomStatus " + roomstatus);
+            //System.out.println("RoomStatus " + roomstatus);
             Members[CREATOR] = new members_info();
             Members[CREATOR].members_id = result.getInt(KEY_ID);
             Members[CREATOR].members_nickname = result.getString(KEY_NICKNAME);

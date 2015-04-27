@@ -177,7 +177,7 @@ public class CreateRoomInfo extends javax.swing.JFrame {
             return;
         }
 
-        System.out.println(response);
+        //System.out.println(response);
         JSONObject result = new JSONObject();
         try {
             result = response.getJSONObject(KEY_RES);

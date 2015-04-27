@@ -11,6 +11,7 @@ import JudgeStatus.JudgeStatus;
 import SendingData.SSLClient;
 import TimerTaskGame.Ask4RoomList;
 import static UI.CreateRoomInfo.STATUS;
+import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -75,7 +76,10 @@ public class HomePage extends javax.swing.JFrame {
     
     public HomePage() throws JSONException {
         initComponents();
-
+        jScrollPane1.getViewport().setOpaque(false);
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getColumnHeader().setOpaque(false);
+        getContentPane().add(jScrollPane1,BorderLayout.CENTER);
         jName.setText(Player.GetPlayer().GetNickName());
         jMoney.setText("Money: " + Player.GetPlayer().GetBalance() + "");
         jRank.setText("Rank: " + Player.GetPlayer().GetRank() + "");
@@ -91,7 +95,7 @@ public class HomePage extends javax.swing.JFrame {
                     return;
                 } else {
                     selected_row = jRoomList.getSelectedRow();
-                    System.out.println("Listener: " + selected_row);
+                    //System.out.println("Listener: " + selected_row);
                 }
             }
         });
@@ -277,16 +281,15 @@ public class HomePage extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3);
@@ -357,6 +360,7 @@ public class HomePage extends javax.swing.JFrame {
         c.setSize(400, 300);
         c.setLocation(0, 0);
         c.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jCreateActionPerformed
 
     private void PurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PurchaseActionPerformed
@@ -409,7 +413,7 @@ public class HomePage extends javax.swing.JFrame {
             //Ask4RoomList task = new Ask4RoomList();
             //System.out.println(selected_row);
             for (int j = 0; j < roomids.length; j++) {
-                System.out.println(roomids[j]);
+                //System.out.println(roomids[j]);
             }
             //System.out.println(selected_row);
             Room.Getroom().SetRoomID(roomids[selected_row]);
@@ -424,7 +428,7 @@ public class HomePage extends javax.swing.JFrame {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        System.out.println(test);
+        //System.out.println(test);
         return test;
     }
 
@@ -489,7 +493,7 @@ public class HomePage extends javax.swing.JFrame {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        System.out.println(test);
+        //System.out.println(test);
         return test;
     }
 
