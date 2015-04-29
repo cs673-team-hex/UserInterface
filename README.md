@@ -1,15 +1,15 @@
-# This is the server for Black Jack game.
+# This is the final client program for Black Jack
 
 Set up
 ============
 
 1. Using Netbeans
 
-Load the root folder into the project, compile.
+   Load the root folder into the project, compile.
 
 2. Using Eclipse
 
-Load all the files from the src, compile. 
+   Load all the files from the src, compile. 
 
   
 Usage
@@ -18,11 +18,12 @@ Usage
 Run command as follow:
 
 1. see the version
+  
   $ java -jar \dist\UserInterface.jar -v 
   
 2. Play the Game
 
-	$ java -jar \dist\UserInterface.jar -ip x.x.x.x 
+  $ java -jar \dist\UserInterface.jar -ip x.x.x.x 
   
 Documentation
 =============
