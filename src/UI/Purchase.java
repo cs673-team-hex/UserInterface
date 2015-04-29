@@ -49,6 +49,16 @@ public class Purchase extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPoints = new javax.swing.JPanel();
+        j10 = new javax.swing.JButton();
+        j20 = new javax.swing.JButton();
+        j50 = new javax.swing.JButton();
+        j100 = new javax.swing.JButton();
+        j200 = new javax.swing.JButton();
+        j500 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
         jPaymentInfo = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -67,16 +77,6 @@ public class Purchase extends javax.swing.JFrame {
         jBack = new javax.swing.JButton();
         jPayNow = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        jPoints = new javax.swing.JPanel();
-        j10 = new javax.swing.JButton();
-        j20 = new javax.swing.JButton();
-        j50 = new javax.swing.JButton();
-        j100 = new javax.swing.JButton();
-        j200 = new javax.swing.JButton();
-        j500 = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -84,6 +84,79 @@ public class Purchase extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel1.setLayout(null);
+
+        jPoints.setLayout(null);
+
+        j10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/img/10.png"))); // NOI18N
+        j10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                j10ActionPerformed(evt);
+            }
+        });
+        jPoints.add(j10);
+        j10.setBounds(60, 70, 110, 100);
+
+        j20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/img/20.png"))); // NOI18N
+        j20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                j20ActionPerformed(evt);
+            }
+        });
+        jPoints.add(j20);
+        j20.setBounds(210, 70, 110, 100);
+
+        j50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/img/50.png"))); // NOI18N
+        j50.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                j50ActionPerformed(evt);
+            }
+        });
+        jPoints.add(j50);
+        j50.setBounds(360, 70, 110, 100);
+
+        j100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/img/100.png"))); // NOI18N
+        j100.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                j100ActionPerformed(evt);
+            }
+        });
+        jPoints.add(j100);
+        j100.setBounds(60, 200, 110, 100);
+
+        j200.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/img/200.png"))); // NOI18N
+        j200.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                j200ActionPerformed(evt);
+            }
+        });
+        jPoints.add(j200);
+        j200.setBounds(210, 200, 110, 100);
+
+        j500.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/img/500.png"))); // NOI18N
+        j500.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                j500ActionPerformed(evt);
+            }
+        });
+        jPoints.add(j500);
+        j500.setBounds(360, 200, 110, 100);
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Select Money Amount");
+        jPoints.add(jLabel9);
+        jLabel9.setBounds(30, 30, 215, 22);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/img/btn_back.jpg"))); // NOI18N
+        jPoints.add(jButton1);
+        jButton1.setBounds(480, 320, 80, 28);
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/img/HomePage_bg.jpg"))); // NOI18N
+        jPoints.add(jLabel10);
+        jLabel10.setBounds(0, 0, 570, 360);
+
+        jPanel1.add(jPoints);
+        jPoints.setBounds(0, 0, 570, 360);
 
         jPaymentInfo.setLayout(null);
 
@@ -184,73 +257,6 @@ public class Purchase extends javax.swing.JFrame {
 
         jPanel1.add(jPaymentInfo);
         jPaymentInfo.setBounds(0, 0, 570, 360);
-
-        jPoints.setLayout(null);
-
-        j10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                j10ActionPerformed(evt);
-            }
-        });
-        jPoints.add(j10);
-        j10.setBounds(60, 70, 114, 102);
-
-        j20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                j20ActionPerformed(evt);
-            }
-        });
-        jPoints.add(j20);
-        j20.setBounds(210, 70, 114, 102);
-
-        j50.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                j50ActionPerformed(evt);
-            }
-        });
-        jPoints.add(j50);
-        j50.setBounds(360, 70, 114, 102);
-
-        j100.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                j100ActionPerformed(evt);
-            }
-        });
-        jPoints.add(j100);
-        j100.setBounds(60, 200, 114, 102);
-
-        j200.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                j200ActionPerformed(evt);
-            }
-        });
-        jPoints.add(j200);
-        j200.setBounds(210, 200, 114, 102);
-
-        j500.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                j500ActionPerformed(evt);
-            }
-        });
-        jPoints.add(j500);
-        j500.setBounds(360, 200, 114, 102);
-
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Select Money Amount");
-        jPoints.add(jLabel9);
-        jLabel9.setBounds(30, 30, 215, 22);
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/img/btn_back.jpg"))); // NOI18N
-        jPoints.add(jButton1);
-        jButton1.setBounds(480, 320, 80, 28);
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/img/HomePage_bg.jpg"))); // NOI18N
-        jPoints.add(jLabel10);
-        jLabel10.setBounds(0, 0, 570, 360);
-
-        jPanel1.add(jPoints);
-        jPoints.setBounds(0, 0, 570, 360);
 
         jLabel1.setFocusable(false);
         jPanel1.add(jLabel1);

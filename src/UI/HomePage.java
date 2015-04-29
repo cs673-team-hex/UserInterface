@@ -76,6 +76,7 @@ public class HomePage extends javax.swing.JFrame {
     
     public HomePage() throws JSONException {
         initComponents();
+        jRecord.setVisible(false);
         //jScrollPane1.getViewport().setOpaque(false);
         //jScrollPane1.setOpaque(false);
         //jScrollPane1.getColumnHeader().setOpaque(false);

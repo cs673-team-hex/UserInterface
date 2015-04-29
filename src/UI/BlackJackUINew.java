@@ -356,12 +356,14 @@ public class BlackJackUINew extends javax.swing.JFrame {
         jPanel5.setOpaque(false);
         jPanel5.setLayout(null);
 
-        jPLose.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jPLose.setFont(new java.awt.Font("Segoe Script", 1, 48)); // NOI18N
+        jPLose.setForeground(new java.awt.Color(255, 255, 255));
         jPLose.setText("YOU LOSE!!!");
         jPanel5.add(jPLose);
         jPLose.setBounds(30, 0, 320, 90);
 
-        jPWin.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jPWin.setFont(new java.awt.Font("Segoe Script", 1, 48)); // NOI18N
+        jPWin.setForeground(new java.awt.Color(255, 255, 255));
         jPWin.setText("YOU WIN!!!");
         jPanel5.add(jPWin);
         jPWin.setBounds(30, 10, 340, 80);
@@ -370,20 +372,20 @@ public class BlackJackUINew extends javax.swing.JFrame {
         jPanel5.setBounds(190, 340, 400, 120);
 
         jNextRound.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jNextRound.setText("Next Round");
+        jNextRound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/img/nextround.png"))); // NOI18N
         jNextRound.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jNextRoundActionPerformed(evt);
             }
         });
         jPanel1.add(jNextRound);
-        jNextRound.setBounds(680, 400, 110, 40);
+        jNextRound.setBounds(640, 400, 130, 41);
 
         jPanel3.setOpaque(false);
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("AI Points:");
+        jLabel8.setText("AI Score:");
         jLabel8.setToolTipText("");
         jLabel8.setFocusable(false);
 
@@ -503,12 +505,14 @@ public class BlackJackUINew extends javax.swing.JFrame {
         jPanel4.setOpaque(false);
         jPanel4.setLayout(null);
 
-        jPFiveDragon.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jPFiveDragon.setFont(new java.awt.Font("Segoe Script", 1, 48)); // NOI18N
+        jPFiveDragon.setForeground(new java.awt.Color(255, 255, 255));
         jPFiveDragon.setText("     Five Dragons!!!");
         jPanel4.add(jPFiveDragon);
         jPFiveDragon.setBounds(10, 0, 440, 100);
 
-        jPBlackJack.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jPBlackJack.setFont(new java.awt.Font("Segoe Script", 1, 48)); // NOI18N
+        jPBlackJack.setForeground(new java.awt.Color(255, 255, 255));
         jPBlackJack.setText("        BlackJack!!!");
         jPanel4.add(jPBlackJack);
         jPBlackJack.setBounds(10, 0, 440, 100);
