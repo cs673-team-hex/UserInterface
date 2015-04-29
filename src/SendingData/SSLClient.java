@@ -58,7 +58,8 @@ public class SSLClient extends Thread {
 		}
 	}
 
-	public static JSONObject postMessage(JSONObject message) throws IOException {
+	public static synchronized JSONObject postMessage(JSONObject message) throws IOException {
+            System.out.println("Message" + message);
             /*try {
                 message.put("userid", 1);
             } catch (JSONException ex) {
@@ -82,6 +83,7 @@ public class SSLClient extends Thread {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+                System.out.println("Response" + response);
 		return response;
 	}
         

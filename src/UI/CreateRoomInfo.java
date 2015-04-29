@@ -41,7 +41,7 @@ public class CreateRoomInfo extends javax.swing.JFrame {
     public CreateRoomInfo() {
         initComponents();
         jTitle.setText(Player.GetPlayer().GetNickName() + "'s room");
-        jMax.setText("8");
+        jMax.setText("3");
         jWager.setText("50");
     }
 

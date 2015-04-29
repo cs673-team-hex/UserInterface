@@ -127,7 +127,7 @@ public class BlackJackUINew extends javax.swing.JFrame {
                 Players = task.getPlayerInfo();
                 int first_player = 0;
                 for(int j = 0; j < Players.length; j++){
-                    if(Players[j].getuserstatus() == 1){
+                    if(Players[j].getposition() == 1){
                         first_player = j;
                     }
                 }
@@ -135,7 +135,7 @@ public class BlackJackUINew extends javax.swing.JFrame {
                 if (Players[first_player].getuserstatus() == 1) {
                     InitialBoardsBetweenRounds();
                     jBet.setText(String.valueOf(task.get_wager()));
-                    for (int i = 2; i < 5; i++) {
+                    for (int i = 0; i < 5; i++) {
                         AICardList.get(i).setIcon(null);
                         YourCardList.get(i).setIcon(null);
                         P1CardList.get(i).setIcon(null);
@@ -159,9 +159,14 @@ public class BlackJackUINew extends javax.swing.JFrame {
                     }
                     //RefreshNumOfPlayerHand(Players[myposition]);
                     TerminateControlOfPlayer();
-                } else if (Players[myposition].getuserstatus() == 4 || Players[myposition].getuserstatus() == 5) {
+                } else if (Players[myposition].getuserstatus() == 4) {
                     //RefreshNumOfPlayerHand(Players[myposition]);
+                    jBet.setText(String.valueOf(task.get_wager()*2));
                     TerminateControlOfPlayer();
+                }else if(Players[myposition].getuserstatus() == 5){
+                    jBet.setText(String.valueOf(task.get_wager()/2));
+                    TerminateControlOfPlayer();
+                    //RefreshWhenYouLose();
                 }
                 if (Players[0].getuserstatus() == 3 || Players[0].getuserstatus() == 4 || Players[0].getuserstatus() == 5) {
                     if (Player.GetPlayer().GetIsCreator() == true) {
@@ -170,7 +175,7 @@ public class BlackJackUINew extends javax.swing.JFrame {
 
                     RefreshNumOfPlayerHand(Players[0]);
                     RoundEnd = true;
-                    if (!BlackJackRule.GetBlackJackResult(Players[myposition], Players[0])) {
+                    if (!BlackJackRule.GetBlackJackResult(Players[myposition], Players[0]) && Players[myposition].getuserstatus() != 5) {
                         RefreshWhenYouWin();
                     } else {
                         RefreshWhenYouLose();
@@ -507,13 +512,13 @@ public class BlackJackUINew extends javax.swing.JFrame {
 
         jPFiveDragon.setFont(new java.awt.Font("Segoe Script", 1, 48)); // NOI18N
         jPFiveDragon.setForeground(new java.awt.Color(255, 255, 255));
-        jPFiveDragon.setText("     Five Dragons!!!");
+        jPFiveDragon.setText("  Five Dragons!!!");
         jPanel4.add(jPFiveDragon);
         jPFiveDragon.setBounds(10, 0, 440, 100);
 
         jPBlackJack.setFont(new java.awt.Font("Segoe Script", 1, 48)); // NOI18N
         jPBlackJack.setForeground(new java.awt.Color(255, 255, 255));
-        jPBlackJack.setText("        BlackJack!!!");
+        jPBlackJack.setText("    BlackJack!!!");
         jPanel4.add(jPBlackJack);
         jPBlackJack.setBounds(10, 0, 440, 100);
 
@@ -661,13 +666,13 @@ public class BlackJackUINew extends javax.swing.JFrame {
     }
 
     public void SendCardToPosition(PlayerInfo Player, boolean roundend) {
-        System.out.println("RoundEnd" + RoundEnd);
-        System.out.println("Player" + Player.getuserid() + " Position " + Player.getposition());
-        System.out.println("MyPosition " + myposition);
+        //System.out.println("RoundEnd" + RoundEnd);
+        //System.out.println("Player" + Player.getuserid() + " Position " + Player.getposition());
+        //System.out.println("MyPosition " + myposition);
         //System.out.println("Position " + Player.getposition());
         current_index = Player.get_current_index();
-        System.out.println("Index " + current_index);
-        System.out.println("Cards " + Player.getCardsInfo()[current_index].getcolor() + Player.getCardsInfo()[current_index].getnumber() + Player.getCardsInfo()[current_index].gethide());
+        //System.out.println("Index " + current_index);
+        //System.out.println("Cards " + Player.getCardsInfo()[current_index].getcolor() + Player.getCardsInfo()[current_index].getnumber() + Player.getCardsInfo()[current_index].gethide());
         if (Player.getposition() == Players[myposition].getposition()) {
             String add = "/PokerCardImage/" + getCardStr(Player.getCardsInfo()[current_index].getcolor(), Player.getCardsInfo()[current_index].getnumber()) + ".png";
             System.out.println(add);
@@ -910,7 +915,7 @@ public class BlackJackUINew extends javax.swing.JFrame {
 
 
     private void jSurrenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSurrenderActionPerformed
-        jBet.setText(String.valueOf(task.get_wager()/2));
+        
         Perform_Action(KEY_SURREND);
         task.run();
         RefreshNumOfPlayerHand(Players[myposition]);
@@ -918,7 +923,7 @@ public class BlackJackUINew extends javax.swing.JFrame {
 
     private void jDoubleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDoubleActionPerformed
         // TODO add your handling code here:
-        jBet.setText(String.valueOf(task.get_wager()*2));
+        
         Perform_Action(KEY_DOUBLE);
         task.run();
         RefreshNumOfPlayerHand(Players[myposition]);

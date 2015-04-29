@@ -9,7 +9,7 @@ import GameInfo.Player;
 import GameInfo.Room;
 import JudgeStatus.JudgeStatus;
 import SendingData.SSLClient;
-import static TimerTaskGame.Ask4RoomList.STATUS;
+//import static TimerTaskGame.Ask4RoomList.STATUS;
 import UI.Registration;
 import java.io.IOException;
 import java.util.TimerTask;
@@ -39,6 +39,7 @@ public class Ask4Roominfo extends TimerTask {
     public static String KEY_WAGER = "wager";
     public static String KEY_ROOMSTATUS = "roomstatus";
     public static String KEY_NICKNAME = "nickname";
+    public static String KEY_STATUS = "status";
     public static int CREATOR = 0;
     public static int INDEX_ID = 0;
     public static int INDEX_NICKNAME = 1;
@@ -93,7 +94,7 @@ public class Ask4Roominfo extends TimerTask {
         }
         //System.out.println(response);
         try {
-            status = response.getInt(STATUS);
+            status = response.getInt(KEY_STATUS);
         } catch (JSONException ex) {
             Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
         }

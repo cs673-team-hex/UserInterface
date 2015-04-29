@@ -65,6 +65,10 @@ public class Ask4RoomList extends TimerTask {
     private int[] roomids = new int[ROOMSPACE];
     private JSONArray roominfo;
 
+    public static String KEY_MONEY = "money";
+    public static String KEY_RANK = "rank";
+    private double money;
+    private int rank;
     private int status;
     public static String STATUS = "status";
 
@@ -92,6 +96,10 @@ public class Ask4RoomList extends TimerTask {
         JSONObject result = new JSONObject();
         try {
             result = response.getJSONObject(KEY_RES);
+            money = result.getDouble(KEY_MONEY);
+            Player.GetPlayer().SetBalance(money);
+            rank = result.getInt(KEY_RANK);
+            Player.GetPlayer().SetRank(rank);
             // System.out.println(result);
         } catch (JSONException ex) {
             Logger.getLogger(Ask4RoomList.class.getName()).log(Level.SEVERE, null, ex);
