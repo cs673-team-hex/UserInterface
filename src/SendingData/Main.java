@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class Main {
 
     public static void main(String args[]) {
-        String version = "v1.26";
+        String version = "v1.27";
         if (args.length == 2 && args[0].equals("-ip")) {
             SSLClient.SetIP(args[1] + "");
             try {
