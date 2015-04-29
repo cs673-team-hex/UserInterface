@@ -69,6 +69,7 @@ public class BlackJackUINew extends javax.swing.JFrame {
     public static int KEY_SURREND = 4;
 
     private boolean RoundEnd = false;
+    private int left = 0;
 
     public BlackJackUINew() {
         //System.out.println("Current Player ID " + Player.GetPlayer().GetUserId());
@@ -77,7 +78,7 @@ public class BlackJackUINew extends javax.swing.JFrame {
         addWindowListener(new WindowAdapter() {
 
             public void windowClosing(WindowEvent e) {
-                this.windowClosing(e);
+                timer_roundinfo.cancel();
                 CreateRoom createRoom = new CreateRoom();
                 createRoom.setVisible(true);
                 try {
@@ -124,7 +125,23 @@ public class BlackJackUINew extends javax.swing.JFrame {
             @Override
             public void onRefresh(String test) {
                 Players = task.getPlayerInfo();
+                int first_player = 0;
+                for(int j = 0; j < Players.length; j++){
+                    if(Players[j].getuserstatus() == 1){
+                        first_player = j;
+                    }
+                }
                 findmyposition();
+                if (Players[first_player].getuserstatus() == 1) {
+                    InitialBoardsBetweenRounds();
+                    jBet.setText(String.valueOf(task.get_wager()));
+                    for (int i = 2; i < 5; i++) {
+                        AICardList.get(i).setIcon(null);
+                        YourCardList.get(i).setIcon(null);
+                        P1CardList.get(i).setIcon(null);
+                        P2CardList.get(i).setIcon(null);
+                    }
+                }
                 if (Players[myposition].getuserstatus() == 0) {
                     TerminateControlOfPlayer();
                 } else if (Players[myposition].getuserstatus() == 1) {
@@ -150,7 +167,7 @@ public class BlackJackUINew extends javax.swing.JFrame {
                     if (Player.GetPlayer().GetIsCreator() == true) {
                         AskForNextRound();
                     }
-                    
+
                     RefreshNumOfPlayerHand(Players[0]);
                     RoundEnd = true;
                     if (!BlackJackRule.GetBlackJackResult(Players[myposition], Players[0])) {
@@ -188,10 +205,8 @@ public class BlackJackUINew extends javax.swing.JFrame {
         jPMoney = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jPBlackJack = new javax.swing.JLabel();
         jPLose = new javax.swing.JLabel();
         jPWin = new javax.swing.JLabel();
-        jPFiveDragon = new javax.swing.JLabel();
         jNextRound = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -222,6 +237,9 @@ public class BlackJackUINew extends javax.swing.JFrame {
         jP2Card3 = new javax.swing.JLabel();
         jP2Card2 = new javax.swing.JLabel();
         jP2Card1 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jPFiveDragon = new javax.swing.JLabel();
+        jPBlackJack = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -333,51 +351,25 @@ public class BlackJackUINew extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 480, 800, 102);
+        jPanel2.setBounds(0, 480, 790, 102);
 
         jPanel5.setOpaque(false);
+        jPanel5.setLayout(null);
 
-        jPBlackJack.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jPBlackJack.setText("BlackJack!!!");
-
-        jPLose.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jPLose.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jPLose.setText("YOU LOSE!!!");
+        jPanel5.add(jPLose);
+        jPLose.setBounds(30, 0, 320, 90);
 
-        jPWin.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jPWin.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jPWin.setText("YOU WIN!!!");
-
-        jPFiveDragon.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jPFiveDragon.setText("Five Dragons!!!");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPFiveDragon, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPBlackJack, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPLose, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPWin, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jPLose, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                .addGap(26, 26, 26)
-                .addComponent(jPWin, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jPFiveDragon, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPBlackJack, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jPanel5.add(jPWin);
+        jPWin.setBounds(30, 10, 340, 80);
 
         jPanel1.add(jPanel5);
-        jPanel5.setBounds(190, 340, 450, 150);
+        jPanel5.setBounds(190, 340, 400, 120);
 
+        jNextRound.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jNextRound.setText("Next Round");
         jNextRound.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -385,7 +377,7 @@ public class BlackJackUINew extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jNextRound);
-        jNextRound.setBounds(680, 390, 100, 23);
+        jNextRound.setBounds(680, 400, 110, 40);
 
         jPanel3.setOpaque(false);
 
@@ -474,15 +466,15 @@ public class BlackJackUINew extends javax.swing.JFrame {
         jP1Cards.setOpaque(false);
         jP1Cards.setLayout(null);
         jP1Cards.add(jP1Card5);
-        jP1Card5.setBounds(0, 0, 73, 90);
+        jP1Card5.setBounds(0, 112, 73, 90);
         jP1Cards.add(jP1Card4);
-        jP1Card4.setBounds(0, 28, 73, 90);
+        jP1Card4.setBounds(0, 84, 73, 90);
         jP1Cards.add(jP1Card3);
         jP1Card3.setBounds(0, 56, 73, 90);
         jP1Cards.add(jP1Card2);
-        jP1Card2.setBounds(0, 84, 73, 90);
+        jP1Card2.setBounds(0, 28, 73, 90);
         jP1Cards.add(jP1Card1);
-        jP1Card1.setBounds(0, 112, 73, 90);
+        jP1Card1.setBounds(0, 0, 73, 90);
 
         jAllCards.add(jP1Cards);
         jP1Cards.setBounds(10, 5, 73, 210);
@@ -491,21 +483,38 @@ public class BlackJackUINew extends javax.swing.JFrame {
         jP2Cards.setOpaque(false);
         jP2Cards.setLayout(null);
         jP2Cards.add(jP2Card5);
-        jP2Card5.setBounds(0, 0, 73, 90);
+        jP2Card5.setBounds(0, 112, 73, 90);
         jP2Cards.add(jP2Card4);
-        jP2Card4.setBounds(0, 28, 73, 90);
+        jP2Card4.setBounds(0, 84, 73, 90);
         jP2Cards.add(jP2Card3);
         jP2Card3.setBounds(0, 56, 73, 90);
         jP2Cards.add(jP2Card2);
-        jP2Card2.setBounds(0, 84, 73, 90);
+        jP2Card2.setBounds(0, 28, 73, 90);
         jP2Cards.add(jP2Card1);
-        jP2Card1.setBounds(0, 112, 73, 90);
+        jP2Card1.setBounds(0, 0, 73, 90);
 
         jAllCards.add(jP2Cards);
         jP2Cards.setBounds(515, 5, 73, 210);
 
         jPanel1.add(jAllCards);
         jAllCards.setBounds(100, 120, 590, 220);
+
+        jPanel4.setFocusable(false);
+        jPanel4.setOpaque(false);
+        jPanel4.setLayout(null);
+
+        jPFiveDragon.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jPFiveDragon.setText("     Five Dragons!!!");
+        jPanel4.add(jPFiveDragon);
+        jPFiveDragon.setBounds(10, 0, 440, 100);
+
+        jPBlackJack.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jPBlackJack.setText("        BlackJack!!!");
+        jPanel4.add(jPBlackJack);
+        jPBlackJack.setBounds(10, 0, 440, 100);
+
+        jPanel1.add(jPanel4);
+        jPanel4.setBounds(140, 0, 460, 110);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PokerCardImage/Table.jpg"))); // NOI18N
         jPanel1.add(jLabel1);
@@ -643,49 +652,49 @@ public class BlackJackUINew extends javax.swing.JFrame {
             case 4:
                 return "Diamond" + number;
         }
-        return null;
+        System.out.println("Color: " + color);
+        return "Back";
     }
 
     public void SendCardToPosition(PlayerInfo Player, boolean roundend) {
-        System.out.println("Position " + myposition);
-
-        System.out.println("Position " + Player.getposition());
+        System.out.println("RoundEnd" + RoundEnd);
+        System.out.println("Player" + Player.getuserid() + " Position " + Player.getposition());
+        System.out.println("MyPosition " + myposition);
+        //System.out.println("Position " + Player.getposition());
         current_index = Player.get_current_index();
         System.out.println("Index " + current_index);
-        int left = 0;
-        if (Player.getposition() == myposition) {
+        System.out.println("Cards " + Player.getCardsInfo()[current_index].getcolor() + Player.getCardsInfo()[current_index].getnumber() + Player.getCardsInfo()[current_index].gethide());
+        if (Player.getposition() == Players[myposition].getposition()) {
             String add = "/PokerCardImage/" + getCardStr(Player.getCardsInfo()[current_index].getcolor(), Player.getCardsInfo()[current_index].getnumber()) + ".png";
             System.out.println(add);
             YourCardList.get(current_index).setIcon(new javax.swing.ImageIcon(getClass().getResource(add)));
             /*if (Player.getCardsInfo()[current_index].gethide() == 1) {
              YourCardList.get(current_index).setIcon(new javax.swing.ImageIcon(getClass().getResource("/PokerCardImage/Back.png")));
              } else if (Player.getCardsInfo()[current_index].gethide() == 0) {
-             String add = "/PokerCardImage/" + getCardStr(Player.getCardsInfo()[current_index].getcolor(), Player.getCardsInfo()[current_index].getcolor()) + ".png";
+             String add = /"/PokerCardImage/" + getCardStr(Player.getCardsInfo()[current_index].getcolor(), Player.getCardsInfo()[current_index].getcolor()) + ".png";
              System.out.println(add);
              YourCardList.get(current_index).setIcon(new javax.swing.ImageIcon(getClass().getResource(add)));
              }*/
         } else if (Player.getposition() == 0) {
-            if (Player.getCardsInfo()[current_index].gethide() == 1 && roundend == false) {
+            if ((Player.getCardsInfo()[current_index].gethide() == 1) && (roundend == false)) {
                 AICardList.get(current_index).setIcon(new javax.swing.ImageIcon(getClass().getResource("/PokerCardImage/Back.png")));
             } else if (Player.getCardsInfo()[current_index].gethide() == 0 || roundend == true) {
                 String add = "/PokerCardImage/" + getCardStr(Player.getCardsInfo()[current_index].getcolor(), Player.getCardsInfo()[current_index].getnumber()) + ".png";
-                System.out.println("Color " + Player.getCardsInfo()[0].getcolor());
-                System.out.println("Number " + Player.getCardsInfo()[0].getnumber());
-                System.out.println(add);
+                //System.out.println("Color " + Player.getCardsInfo()[0].getcolor());
+                //System.out.println("Number " + Player.getCardsInfo()[0].getnumber());
+                //System.out.println(add);
                 AICardList.get(current_index).setIcon(new javax.swing.ImageIcon(getClass().getResource(add)));
             }
-        } else if (left == 0) {
-            left = 1;
-            Player.set_is_left(true);
+        } else if (Player.getposition() - 1 == (Players[myposition].getposition() + 1) % 3) {
+            //System.out.println("RoundEnd" + RoundEnd);
             if (Player.getCardsInfo()[current_index].gethide() == 1 && roundend == false) {
                 P1CardList.get(current_index).setIcon(new javax.swing.ImageIcon(getClass().getResource("/PokerCardImage/Back.png")));
             } else if (Player.getCardsInfo()[current_index].gethide() == 0 || roundend == true) {
                 String add = "/PokerCardImage/" + getCardStr(Player.getCardsInfo()[current_index].getcolor(), Player.getCardsInfo()[current_index].getnumber()) + ".png";
+                //System.out.println("Reach");
                 P1CardList.get(current_index).setIcon(new javax.swing.ImageIcon(getClass().getResource(add)));
             }
-        } else if (left == 1) {
-            left = 0;
-            Player.set_is_right(true);
+        } else if (Player.getposition() - 1 == Players[myposition].getposition() % 3) {
             if (Player.getCardsInfo()[current_index].gethide() == 1 && roundend == false) {
                 P2CardList.get(current_index).setIcon(new javax.swing.ImageIcon(getClass().getResource("/PokerCardImage/Back.png")));
             } else if (Player.getCardsInfo()[current_index].gethide() == 0 || roundend == true) {
@@ -702,7 +711,7 @@ public class BlackJackUINew extends javax.swing.JFrame {
         for (int i = 0; i < Players.length; i++) {
             //if (Old_Players == null || Players[i].Is_CardsUpdated(Old_Players[i], Players[i])) {
             current_sum = Players[i].getcardsnum();
-            System.out.println("Cards sum " + Players[i].getcardsnum());
+            //System.out.println("Cards sum " + Players[i].getcardsnum());
             while (Players[i].get_current_index() < current_sum) {
                 SendCardToPosition(Players[i], roundend);
             }
@@ -885,13 +894,7 @@ public class BlackJackUINew extends javax.swing.JFrame {
         if (JudgeStatus.OutputStatus(status) == false) {
             return;
         }
-        InitialBoardsBetweenRounds();
-        for (int i = 2; i < 5; i++) {
-            AICardList.get(i).setIcon(null);
-            YourCardList.get(i).setIcon(null);
-            P1CardList.get(i).setIcon(null);
-            P2CardList.get(i).setIcon(null);
-        }
+
         task.run();
     }//GEN-LAST:event_jNextRoundActionPerformed
 
@@ -903,6 +906,7 @@ public class BlackJackUINew extends javax.swing.JFrame {
 
 
     private void jSurrenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSurrenderActionPerformed
+        jBet.setText(String.valueOf(task.get_wager()/2));
         Perform_Action(KEY_SURREND);
         task.run();
         RefreshNumOfPlayerHand(Players[myposition]);
@@ -910,6 +914,7 @@ public class BlackJackUINew extends javax.swing.JFrame {
 
     private void jDoubleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDoubleActionPerformed
         // TODO add your handling code here:
+        jBet.setText(String.valueOf(task.get_wager()*2));
         Perform_Action(KEY_DOUBLE);
         task.run();
         RefreshNumOfPlayerHand(Players[myposition]);
@@ -1003,6 +1008,7 @@ public class BlackJackUINew extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel jPcard1;
     private javax.swing.JLabel jPcard2;

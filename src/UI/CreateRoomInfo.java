@@ -202,6 +202,13 @@ public class CreateRoomInfo extends javax.swing.JFrame {
 
     private void jCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelActionPerformed
         // TODO add your handling code here:
+        HomePage homePage;
+        try {
+            homePage = new HomePage();
+            homePage.setVisible(true);
+        } catch (JSONException ex) {
+            Logger.getLogger(CreateRoom.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();
     }//GEN-LAST:event_jCancelActionPerformed
 

@@ -35,6 +35,7 @@ public class Ask4RoundInfo extends TimerTask {
     public static String STATUS = "status";
     public static String KEY_ROUNDINFO = "blackjackroundinfo";
     public static String KEY_RES = "result";
+    public static String KEY_WAGER = "wager";
     public static String KEY_MEMBERS = "members";
     public static String KEY_USERID = "userid";
     public static String KEY_POSITION = "position";
@@ -45,16 +46,16 @@ public class Ask4RoundInfo extends TimerTask {
     public static String KEY_HIDE = "hide";
     public static int MAXMEMBER = 4;
 
+    private int wager;
     private JSONArray members;
     PlayerInfo[] Players;
     private int player_num;
-    
+
     //private int[] userids = new int[MAXMEMBER];
     //private int[] positions = new int[MAXMEMBER];
     //private int[] userstatus = new int[MAXMEMBER];
     //private JSONArray cards;
     //private int[] positions = new int[MAXMEMBER];
-
     public interface OnRefreshListener {
 
         public void onRefresh(String test);
@@ -65,7 +66,7 @@ public class Ask4RoundInfo extends TimerTask {
     public void setOnRefreshListner(OnRefreshListener listener) {
         onRefreshListener = listener;
     }
-    
+
     @Override
     public void run() {
         try {
@@ -88,6 +89,7 @@ public class Ask4RoundInfo extends TimerTask {
         JSONObject result = new JSONObject();
         try {
             result = response.getJSONObject(KEY_RES);
+            wager = result.getInt(KEY_WAGER);
             members = result.getJSONArray(KEY_MEMBERS);
         } catch (JSONException ex) {
             Logger.getLogger(Ask4Roominfo.class.getName()).log(Level.SEVERE, null, ex);
@@ -97,14 +99,14 @@ public class Ask4RoundInfo extends TimerTask {
         if (member != null) {
             player_num = members.length();
             Players = new PlayerInfo[members.length()];
-            System.out.println("members length " + members.length());
+            //System.out.println("members length " + members.length());
             for (int i = 0; i < members.length(); i++) {
                 try {
                     //cards_total = members.getJSONArray(i);
                     member = members.getJSONObject(i);
                     cards_total = member.getJSONArray(KEY_CARDS);
                     Players[i] = new PlayerInfo(cards_total);
-                    System.out.println(cards_total);
+                    //System.out.println(cards_total);
                     Players[i].setuserid(member.getInt(KEY_USERID));
                     Players[i].setposition(member.getInt(KEY_POSITION));
                     Players[i].setuserstatus(member.getInt(KEY_USERSTATUS));
@@ -118,14 +120,22 @@ public class Ask4RoundInfo extends TimerTask {
         }
     }
 
-    public PlayerInfo[] getPlayerInfo(){
+    public void set_wager(int Wager) {
+        wager = Wager;
+    }
+
+    public int get_wager() {
+        return wager;
+    }
+
+    public PlayerInfo[] getPlayerInfo() {
         return Players;
     }
-    
-    public int getPlayernum(){
+
+    public int getPlayernum() {
         return player_num;
     }
-    
+
     public class PlayerInfo {
 
         final int MAXCARDS = 5;
@@ -140,49 +150,49 @@ public class Ask4RoundInfo extends TimerTask {
         private int max_value;
         CardsInfo[] Cards;
 
-        public int get_current_index(){
+        public int get_current_index() {
             return current_index;
         }
-        
-        public void set_current_index(int index){
+
+        public void set_current_index(int index) {
             current_index = index;
         }
-        
-        public int get_max_value(){
+
+        public int get_max_value() {
             return max_value;
         }
-        
-        public void set_max_value(int MaxValue){
+
+        public void set_max_value(int MaxValue) {
             max_value = MaxValue;
         }
+
+        /*public boolean get_is_left(){
+         return is_left;
+         }
         
-        public boolean get_is_left(){
-            return is_left;
-        }
+         public boolean get_is_right(){
+         return is_right;
+         }
         
-        public boolean get_is_right(){
-            return is_right;
-        }
+         public void set_is_left(boolean Is_Left){
+         is_left = Is_Left;
+         }
         
-        public void set_is_left(boolean Is_Left){
-            is_left = Is_Left;
-        }
-        
-        public void set_is_right(boolean Is_Right){
-            is_right = Is_Right;
-        }
-        
-        public boolean Is_CardsUpdated(PlayerInfo Old_playerinfo, PlayerInfo New_playerinfo){
-            if(Old_playerinfo.cards_num != New_playerinfo.cards_num || Old_playerinfo.Cards[0].hide != New_playerinfo.Cards[0].hide){
+         public void set_is_right(boolean Is_Right){
+         is_right = Is_Right;
+         }*/
+        public boolean Is_CardsUpdated(PlayerInfo Old_playerinfo, PlayerInfo New_playerinfo) {
+            if (Old_playerinfo.cards_num != New_playerinfo.cards_num || Old_playerinfo.Cards[0].hide != New_playerinfo.Cards[0].hide) {
                 return true;
-            }
-            else{
+            } else {
                 return false;
             }
         }
-        
+
         public PlayerInfo(JSONArray cards) {
-            if(cards == null){return;}
+            if (cards == null) {
+                return;
+            }
             Cards = new CardsInfo[cards.length()];
             cards_num = cards.length();
             for (int i = 0; i < cards.length(); i++) {
@@ -202,14 +212,14 @@ public class Ask4RoundInfo extends TimerTask {
             private int color;
             private int number;
             private int hide;
-            
+
             public CardsInfo(JSONObject card) {
                 try {
                     System.out.println("Card " + card);
                     color = card.getInt(KEY_COLOR);
                     number = card.getInt(KEY_NUMBER);
                     hide = card.getInt(KEY_HIDE);
-                    System.out.println("Color " + color + " Number" + number + " Hide" + hide);
+                    //System.out.println("Color " + color + " Number" + number + " Hide" + hide);
                 } catch (JSONException ex) {
                     Logger.getLogger(Ask4RoundInfo.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -240,10 +250,10 @@ public class Ask4RoundInfo extends TimerTask {
             }
         }
 
-        public int getcardsnum(){
+        public int getcardsnum() {
             return cards_num;
         }
-        
+
         public CardsInfo[] getCardsInfo() {
             return Cards;
         }

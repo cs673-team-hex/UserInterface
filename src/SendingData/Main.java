@@ -1,6 +1,6 @@
 package SendingData;
 
-
+import GameInfo.Music;
 import UI.HomePage;
 import UI.Login;
 import UI.Registration;
@@ -18,27 +18,37 @@ import org.json.JSONObject;
 public class Main {
 
     public static void main(String args[]) {
-        try {
-         SSLClient.initConnect();
-         } catch (Exception e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-         } 
-        Login l = new Login();
-        l.setSize(800, 530);
-        l.setLocation(300, 200);
-        l.setVisible(true);
-        
-        /*HomePage h = null;
-        try {
-            h = new HomePage();
-        } catch (JSONException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        String version = "v1.18";
+        if (args.length == 2 && args[0].equals("-ip")) {
+            SSLClient.SetIP(args[1] + "");
+            try {
+                SSLClient.initConnect();
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            //System.out.println(args[1]);
+
+            Login l = new Login();
+            l.setSize(800, 530);
+            l.setLocation(300, 200);
+            l.setVisible(true);
+        } else if (args.length == 1 && args[0].equals("-v")) {
+            System.out.println("The current version is " + version);
+        } else {
+            System.out.println("Please Enter Your IP Adress with Command -ip");
         }
-        h.setSize(810,460);
-        h.setLocation(0,0);
-        h.setVisible(true);*/
         
+
+        /*HomePage h = null;
+         try {
+         h = new HomePage();
+         } catch (JSONException ex) {
+         Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         h.setSize(810,460);
+         h.setLocation(0,0);
+         h.setVisible(true);*/
 
         /*try {
          SSLClient.closeConnect();

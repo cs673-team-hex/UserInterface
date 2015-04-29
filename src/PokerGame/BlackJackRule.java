@@ -27,10 +27,10 @@ public class BlackJackRule {
             //You certainly not, Man!
             return false;
         }
-        if (cardArray[0].getnumber() == 1 && cardArray[1].getnumber() >= 10 && cardArray[1].getnumber() < 12) {
+        if (cardArray[0].getnumber() == 1 && cardArray[1].getnumber() >= 10 && cardArray[1].getnumber() < 14) {
             return true;
         }
-        if (cardArray[1].getnumber() == 1 && cardArray[0].getnumber() >= 10 && cardArray[0].getnumber() < 12) {
+        if (cardArray[1].getnumber() == 1 && cardArray[0].getnumber() >= 10 && cardArray[0].getnumber() < 14) {
             return true;
         }
         return false;

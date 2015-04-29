@@ -27,7 +27,7 @@ public class SSLClient extends Thread {
 	private static BufferedWriter mBufferedWriter;
 	private static BufferedReader mBufferedReader;
 	private static SSLSocket msslSock;
-        public static String IPADD = "155.41.103.112";
+        public static String IPADD;// = "155.41.103.112";
         
 	public static void initConnect() throws KeyManagementException,
 			NoSuchAlgorithmException, UnsupportedEncodingException, IOException {
@@ -38,7 +38,7 @@ public class SSLClient extends Thread {
 		SSLContext sc = SSLContext.getInstance("SSL");
 		sc.init(null, trustAllCerts, new java.security.SecureRandom());
 		SSLSocketFactory sslSocketFactory = sc.getSocketFactory();
-
+                System.out.println("IP Adress" + IPADD);
 		msslSock = (SSLSocket) sslSocketFactory.createSocket(IPADD,8081);
 
 		// send HTTP get request
@@ -84,4 +84,8 @@ public class SSLClient extends Thread {
 		}
 		return response;
 	}
+        
+        public static void SetIP(String ip){
+            IPADD = ip; 
+        }
 }

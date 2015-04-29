@@ -5,6 +5,8 @@
  */
 package GameInfo;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -16,26 +18,27 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 /**
  *
  * @author Wei
  */
 public class Music {
+
     
-    private int Song_Num;
-    
+    private int Song_Num;    
     private static Music music = null; 
     
-    public static void initial(int song_number){
-        music = new Music(song_number);
+    private static void initial(){
+        music = new Music();
     }
 
-    private Music(int song_number){
-        this.Song_Num = song_number;
-        startMusic(this.Song_Num);
+    private Music(){
+        //startMusic(this.Song_Num);
     }
     
-    private void startMusic(int song_number){
+    public void startMusic(int song_number){
         
         try {
             /*AudioPlayer myBackgroundPlayer = AudioPlayer.player;
@@ -50,11 +53,14 @@ public class Music {
             Logger.getLogger(Music.class.getName()).log(Level.SEVERE, null, ex);
             }
             myBackgroundPlayer.start(myLoop);*/
-            File soundfile = new File("src/UI/BackGroundMusic/Normal.wav");
+            String Add = "src/UI/BackGroundMusic/Normal" + song_number + ".wav";
+            //String newAdd = this.getClass().getResource(Add).toString();
+            File soundfile = new File(Add);
             Clip clip = AudioSystem.getClip();
             AudioInputStream inputStream = AudioSystem.getAudioInputStream(soundfile);
             clip.open(inputStream);
             clip.start();
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
         } catch (LineUnavailableException ex) {
             Logger.getLogger(Music.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedAudioFileException ex) {
@@ -65,8 +71,31 @@ public class Music {
     }
     
     public static Music GetMusic(){
+        if(music == null)
+            initial();
         return music;
     }
+    
+    /*public static void Create_MusicBtn(JFrame Jframe){
+        JButton MusicBtn = new JButton("Play");
+        Jframe.add(MusicBtn);
+        MusicBtn.setSize(60,20);
+        MusicBtn.setLocation(Jframe.getWidth() - 60,Jframe.getHeight() - 20);
+        MusicBtn.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (play == 1){
+                    startMusic(1);
+                    play = 0;
+                }
+                else if (play == 0){
+                    
+                }
+            }
+            
+        });
+    }*/
     
     public void SetSong_Num(int song_number){
         this.Song_Num = song_number;

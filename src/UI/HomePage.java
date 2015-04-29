@@ -268,6 +268,8 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
         jRoomList.setOpaque(false);
+        jRoomList.getTableHeader().setResizingAllowed(false);
+        jRoomList.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jRoomList);
         if (jRoomList.getColumnModel().getColumnCount() > 0) {
             jRoomList.getColumnModel().getColumn(0).setResizable(false);
@@ -360,6 +362,7 @@ public class HomePage extends javax.swing.JFrame {
         c.setSize(400, 300);
         c.setLocation(0, 0);
         c.setVisible(true);
+        timer_roomlist.cancel();
         this.dispose();
     }//GEN-LAST:event_jCreateActionPerformed
 
@@ -397,6 +400,7 @@ public class HomePage extends javax.swing.JFrame {
         C.setSize(800, 450);
         C.setLocation(0, 0);
         C.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jJoinActionPerformed
 
     public JSONObject getMessgeJoin() {

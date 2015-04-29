@@ -81,7 +81,8 @@ public class Login extends javax.swing.JFrame {
             }
         });
         
-        Music.initial(1);
+        //Music.initial
+       Music.GetMusic().startMusic(1);
     }
     
     /**
